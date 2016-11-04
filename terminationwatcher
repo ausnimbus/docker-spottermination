@@ -4,10 +4,10 @@ INSTANCE_ID=$(curl -s "http://169.254.169.254/latest/meta-data/instance-id")
 
 while true
   do
-    if [ -z $(curl -Is http://169.254.169.254/latest/meta-data/spot/termination-time | head -1 | grep 404 | cut -d \  -f 2) ]
+    if curl -s http://169.254.169.254/latest/meta-data/spot/termination-time | grep -q ".*T.*Z";
       then
         # Call shutdown URL
-        until $(curl --output /dev/null --silent --head --fail $URL_ENDPOINT/$INSTANCE_ID); do
+        until $(curl -X POST --output /dev/null --silent --head --fail $URL_ENDPOINT/$INSTANCE_ID); do
             printf '.'
             sleep 5
         done
