@@ -1,0 +1,22 @@
+#!/bin/bash
+
+INSTANCE_ID=$(curl -s "http://169.254.169.254/latest/meta-data/instance-id")
+
+while true
+  do
+    if [ -z $(curl -Is http://169.254.169.254/latest/meta-data/spot/termination-time | head -1 | grep 404 | cut -d \  -f 2) ]
+      then
+        # Call shutdown URL
+        until $(curl --output /dev/null --silent --head --fail $URL_ENDPOINT/$INSTANCE_ID); do
+            printf '.'
+            sleep 5
+        done
+        break
+      else
+        # Spot instance not yet marked for termination.
+        sleep 5
+    fi
+  done
+
+# 2 minutes then byebye
+sleep 120
