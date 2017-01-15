@@ -1,8 +1,8 @@
----
 sudo: required
-
 services:
-  - docker
-
+- docker
 script:
-  - docker build -t ausnimbus/termination-watcher:latest .
+- docker build -t ausnimbus/termination-watcher:latest .
+notifications:
+  slack:
+    secure: NaAcBaF+xSk278BzOSkoO8dnqgNC+Iwkf5XivcUT6Md4gk52oi5mUfa6+uF7NijDW2RjHOGSP20KcqGoWwx1Hc7bMj+WpmDp03o6/iUUyzWEkBUvo1HH7ycjx3EYwO/GUTVWN4pbMvWJ40uARhF2py1xnkfO2e5N0oAC3bIUfLOBAjCPF3u3vziSva+SnI2zPFiyUkAa9nBm6DRfUbrTYKO+GYgWzFBdHh3+2sXoHt2+6qaonapLCkWpO4jXM1wwNhU5sjsHkocH18qveMSE1WbpvMC8zH9RPU3bu+mKW4gpse+sWKlItNU7T/mtUeUe9Gpy6QNcw5ln5s74qw6XNbzWxkaHoS6orKUei5ETGl8uJ/QyR9gnRQwEgn6zGnZv9BJpnlvhrWV7KXQGp3UZwrGd9vynayw+I1ERVm2bYPzg+M22tFIzPWzIGZ59Pk2X597pgRI5/MJg05sf33rDkoVEZoyiY2sxLNNrFvxb7ypFF+5yrm/EDHY6ubZyoQElwQsBPEuE9nGyk/5F1iVGGBNu5Vbivb2+mHM+yccDeViJeAlZFTFvCA1HYC7aMIXwlL9nCS78O+YqZfl0s7RCUi1hXJTJMvGlqzlB89oLeg/LEcAuGAxqrXZaMPrmf6TLz3xlmSuu50rB/dhS7zzEIooxtFdm2hveUvJiYrjFbvE=
