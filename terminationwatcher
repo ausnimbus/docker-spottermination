@@ -7,7 +7,7 @@ while true
     if curl -s http://169.254.169.254/latest/meta-data/spot/termination-time | grep -q ".*T.*Z";
       then
         # Call shutdown URL
-        until $(curl -X POST --output /dev/null --silent --head --fail $URL_ENDPOINT/$INSTANCE_ID); do
+        until $(curl -X POST --output /dev/null --silent --head --fail $URL_ENDPOINT/?instance_id=$INSTANCE_ID); do
             printf '.'
             sleep 5
         done
@@ -20,4 +20,3 @@ while true
 
 # 2 minutes then byebye
 sleep 120
-
